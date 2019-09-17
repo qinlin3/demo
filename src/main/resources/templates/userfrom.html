@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:include="include/bootstrap :: head"></th:block>
+</head>
+<body>
+    <div th:replace="include/bootstrap :: nav"></div>
+    <div class="jumbotron">
+        <h1>学生信息表</h1>
+        <table>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>password</th>
+
+
+            </tr>
+            <tr th:each="l:${l}">
+                <td th:text="${l.id}"></td>
+                <td th:text="${l.name}"></td>
+                <td th:text="${l.password}"></td>
+
+
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

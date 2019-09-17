@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:include="include/bootstrap :: head"></th:block>
+</head>
+<body>
+    <div th:replace="include/bootstrap :: nav"></div>
+    <div class="jumbotron">
+        <h1>学生信息表</h1>
+        <table>
+            <tr>
+                <th>id</th>
+                <th>studentId</th>
+                <th>className</th>
+                <th>name</th>
+                <th>address</th>
+                <th>mobile</th>
+                <th>mobile</th>
+            </tr>
+            <tr th:each="list: ${list}">
+                <td th:text="${list.id}"></td>
+                <td th:text="${list.studentId}"></td>
+                <td th:text="${list.className}"></td>
+                <td th:text="${list.name}"></td>
+                <td th:text="${list.address}"></td>
+                <td th:text="${list.mobile}"></td>
+                <td th:text="${list.birthday}"></td>
+
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

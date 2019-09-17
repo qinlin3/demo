@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <title>QUOO</title>
+    <!-- css -->
+    <link href="css/base.min.css" rel="stylesheet">
+    <link href="css/project.min.css" rel="stylesheet">
+
+    <!-- favicon -->
+    <!-- ... -->
+</head>
+<style>
+    .divcss5{ position:fixed; bottom:0;}
+</style>
+<body class="page-brand">
+<header class="header header-transparent header-waterfall ui-header">
+    <ul class="nav nav-list pull-left">
+        <li>
+            <a data-toggle="menu" href="#ui_menu">
+                <span class="icon icon-lg">format_align_justify</span>
+            </a>
+        </li>
+    </ul>
+
+    <ul class="nav nav-list pull-right">
+        <li class="dropdown margin-right">
+            <a class="dropdown-toggle padding-left-no padding-right-no" data-toggle="dropdown">
+                <span class="access-hide">未登录</span>
+                <span class="icon icon-cd margin-right">account_circle</span>
+                <!--	<span class="avatar avatar-sm"><img alt="alt text for John Smith avatar" src="/theme/material/images/users/avatar-001.jpg"></span> -->
+            </a>
+            <ul class="dropdown-menu dropdown-menu-right">
+                <li>
+                    <a class="padding-right-lg waves-attach" href="/auth/login"><span class="icon icon-lg margin-right">vpn_key</span>登录</a>
+                </li>
+                <li>
+                    <a class="padding-right-lg waves-attach" href="/auth/register"><span class="icon icon-lg margin-right">person_add</span>注册</a>
+                </li>
+            </ul>
+
+        </li>
+    </ul>
+</header>
+<nav aria-hidden="true" class="menu menu-left nav-drawer nav-drawer-md" id="ui_menu" tabindex="-1">
+    <div class="menu-scroll">
+        <div class="menu-content">
+            <a class="menu-logo" href="/"><i class="icon icon-lg">language</i>&nbsp;点击返回官网</a>
+            <ul class="nav">
+                <li>
+                    <a  href="/login"><i class="icon icon-lg">vpn_key</i>&nbsp;登录</a>
+                </li>
+                <li>
+                    <a  href="/register"><i class="icon icon-lg">person_add</i>&nbsp;注册</a>
+                </li>
+                <li>
+                    <a  href="/reset"><i class="icon icon-lg">security</i>&nbsp;重置密码</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+<main class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-lg-push-4 col-sm-6 col-sm-push-3">
+                <section class="content-inner">
+                    <div class="card">
+                        <div class="card-main">
+                            <div class="card-header">
+                                <div class="card-inner">
+                                    <!-- 这里可以取消掉注释换logo图。
+                                    <h1 class="card-heading"><img src="/images/register.jpg" height=100% width=100% /></h1>
+                                    -->
+                                    <h1 class="card-heading">
+                                        <div class="text" style=" text-align:center;">
+                                            欢迎来到
+                                        </div>
+                                        <div class="text" style=" text-align:center;font-weight: bold;">
+                                            QUOO
+                                        </div>
+                                    </h1>
+                                </div>
+                            </div>
+                            <div class="card-inner">
+
+                                <form method="post" th:action="@{/login}">
+
+                                <div class="form-group form-group-label">
+                                    <div class="row">
+                                        <div class="col-md-10 col-md-push-1">
+                                            <label class="floating-label" for="email">邮箱(唯一凭证请认真对待)</label>
+                                            <input class="form-control" id="email" type="text" name="email">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group form-group-label">
+                                    <div class="row">
+                                        <div class="col-md-10 col-md-push-1">
+                                            <label class="floating-label" for="email_code">邮箱验证码</label>
+                                            <input class="form-control" id="email_code" type="text" onKeypress="javascript:if(event.keyCode == 32)event.returnValue = false;">
+                                            <button id="email_verify" class="btn btn-block btn-brand-accent waves-attach waves-light">点击获取验证码</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group form-group-label">
+                                    <div class="row">
+                                        <div class="col-md-10 col-md-push-1">
+                                            <label class="floating-label" for="passwd">密码</label>
+                                            <input class="form-control" id="passwd" type="password" name="password">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group form-group-label">
+                                    <div class="row">
+                                        <div class="col-md-10 col-md-push-1">
+                                            <label class="floating-label" for="repasswd">重复密码</label>
+                                            <input class="form-control" id="repasswd" type="password">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div id="showyqm" style="display:none;">
+                                    <div class="form-group form-group-label">
+                                        <div class="row">
+                                            <div class="col-md-10 col-md-push-1">
+                                                <label class="floating-label" for="code">邀请码(必填)</label>
+                                                <input class="form-control" id="code" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-10 col-md-push-1">
+                                            <button id="tos" type="submit" class="btn btn-block btn-brand waves-attach waves-light">注册</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                </form>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-10 col-md-push-1">
+                                            <p>注册即代表同意<a href="/tos">服务条款</a>，以及保证所录入信息的真实性，如有不实信息会导致账号被删除。</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div aria-hidden="true" class="modal modal-va-middle fade" id="result" role="dialog" tabindex="-1">
+                        <div class="modal-dialog modal-xs">
+                            <div class="modal-content">
+                                <div class="modal-inner">
+                                    <p class="h5 margin-top-sm text-black-hint" id="msg"></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <p class="text-right"><button class="btn btn-flat btn-brand-accent waves-attach" data-dismiss="modal" type="button" id="result_ok">知道了</button></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div aria-hidden="true" class="modal modal-va-middle fade" id="tos_modal" role="dialog" tabindex="-1">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-heading">
+                                    <h2 class="modal-title">注册 TOS</h2>
+                                </div>
+                                <div class="modal-inner">
+                                    <ul>
+                                        <li>请提供真实邮箱，并自行保管。邮箱为用户的唯一凭证。</li>
+                                        <li>本站会加密存储用户密码，尽量保证数据安全，但并不保证这些信息的绝对安全。</li>
+                                        <li>禁止使用本站服务进行任何违法恶意活动。</li>
+                                        <li>使用任何节点，需遵循节点所属国家的相关法律以及中国法律。</li>
+                                        <li>禁止滥用本站提供的服务。</li>
+                                        <li>对于免费用户，我们有权在不通知的情况下删除账户。</li>
+                                        <li>任何违反使用条款的用户，我们将会删除违规账户并收回使用本站服务的权利。</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-footer">
+                                    <p class="text-right"><button class="btn btn-flat btn-brand-accent waves-attach waves-effect" data-dismiss="modal" type="button" id="cancel">我不同意</button>
+                                        <button class="btn btn-flat btn-brand-accent waves-attach waves-effect" data-dismiss="modal" id="reg" type="button">我同意</button>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div aria-hidden="true" class="modal modal-va-middle fade" id="email_nrcy_modal" role="dialog" tabindex="-1">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-heading">
+                                    <h2 class="modal-title">收不到验证码？</h2>
+                                </div>
+                                <div class="modal-inner">
+                                    <ul>
+                                        <img src="/images/email_nrcy.jpg" height="458" width="468">
+                                        <br />
+                                    </ul>
+                                </div>
+                                <div class="modal-footer">
+                                    <p class="text-right">
+                                        <button class="btn btn-flat btn-brand-accent waves-attach waves-effect" data-dismiss="modal" type="button">我知道了</button>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="ui-footer">
+    <div class="container">
+        <marquee>&copy; QUOO  <a href="/staff">STAFF</a><amarquee>		</div>
+</footer>
+
+
+
+
+<!-- js -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/base.min.js"></script>
+<script src="js/project.min.js"></script>
+</body>
+</html>
