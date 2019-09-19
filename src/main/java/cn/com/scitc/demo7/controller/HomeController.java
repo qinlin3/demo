@@ -32,4 +32,8 @@ public class HomeController {
         model.addAttribute("l",l);
         return "userfrom";
     }
+    @RequestMapping(value = "/new")
+    public String create(){
+        return "create";
+    }
 }

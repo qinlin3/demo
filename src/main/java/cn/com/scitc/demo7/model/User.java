@@ -8,17 +8,17 @@ import java.util.Objects;
 
 @Entity
 public class User {
-    private String id;
+    private int id;
     private String name;
     private String password;
 
     @Id
-    @Column(name = "id", nullable = false, length = 10)
-    public String getId() {
+    @Column(name = "id", nullable = false)
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -47,7 +47,7 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(id, user.id) &&
+        return id == user.id &&
                 Objects.equals(name, user.name) &&
                 Objects.equals(password, user.password);
     }

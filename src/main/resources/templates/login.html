@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>QUOO</title>
     <!-- css -->
@@ -92,15 +92,14 @@
                                             </div>
                                         </div>
                                         <div class="card-inner">
-                                            <form action="javascript:void(0);" method="POST">
-
+                                            <form method="post" th:action="@{/s}">
 
                                                 <div class="form-group form-group-label">
                                                     <div class="row">
                                                         <div class="col-md-10 col-md-push-1">
                                                             <label class="floating-label" for="email">邮箱</label>
                                                             <input class="form-control" id="email" type="text"
-                                                                   name="Email">
+                                                                   name="email">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -108,7 +107,7 @@
                                                     <div class="row">
                                                         <div class="col-md-10 col-md-push-1">
                                                             <label class="floating-label" for="passwd">密码</label>
-                                                            <input class="form-control" id="passwd" type="password" name="Password">
+                                                            <input class="form-control" id="passwd" type="password" name="password">
                                                             <!--<a href="/password/reset" >忘记密码？点击这里</a>-->
                                                         </div>
                                                     </div>
@@ -126,7 +125,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
+                                            </form>
                                                 <div class="form-group">
                                                     <div class="row">
                                                         <div class="col-md-10 col-md-push-1">
@@ -143,7 +142,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </form>
+
                                         </div>
                                     </div>
                                 </div>
@@ -189,65 +188,3 @@
 <script type="text/javascript" color="217,113,24" opacity="0.8" count="99" src="/assets/js/canvas-nest.min.js"></script>
 </body>
 </html>
-
-
-<script>
-    $(document).ready(function () {
-        function login() {
-
-            document.getElementById("login").disabled = true;
-
-            $.ajax({
-                type: "POST",
-                url: "/auth/login",
-                dataType: "json",
-                data: {
-                    email: $("#email").val(),
-                    passwd: $("#passwd").val(),
-                    code: $("#code").val(),
-                    remember_me: $("#remember_me:checked").val()                },
-                success: function (data) {
-                    if (data.ret == 1) {
-                        $("#result").modal();
-                        $("#msg").html(data.msg);
-                        window.setTimeout("location.href='/user'", 1200);
-                    } else {
-                        $("#result").modal();
-                        $("#msg").html(data.msg);
-                        document.getElementById("login").disabled = false;
-                    }
-                },
-                error: function (jqXHR) {
-                    $("#msg-error").hide(10);
-                    $("#msg-error").show(100);
-                    $("#msg-error-p").html("发生错误：" + jqXHR.status);
-                    document.getElementById("login").disabled = false;
-                }
-            });
-        }
-
-        $("html").keydown(function (event) {
-            if (event.keyCode == 13) {
-                login();
-            }
-        });
-        $("#login").click(function () {
-            login();
-        });
-
-        $('div.modal').on('shown.bs.modal', function () {
-            $("div.gt_slider_knob").hide();
-        });
-
-        $('div.modal').on('hidden.bs.modal', function () {
-            $("div.gt_slider_knob").show();
-        });
-    })
-</script>
-
-
-
-<?php
-$a=$_POST['Email'];
-$b=$_POST['Password'];
-?>

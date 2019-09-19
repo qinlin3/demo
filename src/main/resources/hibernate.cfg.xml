@@ -6,7 +6,7 @@
   <session-factory>
     <property name="connection.url">jdbc:mysql://localhost:3306/student?serverTimezone=UTC</property>
     <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-    <mapping class="cn.com.scitc.demo7.model.Course"/>
+      <mapping class="cn.com.scitc.demo7.model.Course"/>
       <mapping class="cn.com.scitc.demo7.model.Student"/>
       <mapping class="cn.com.scitc.demo7.model.Studentscore"/>
     <mapping class="cn.com.scitc.demo7.model.User"/>

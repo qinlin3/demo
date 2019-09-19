@@ -22,7 +22,7 @@ public class RegisterController {
         user.setName(email);
         user.setPassword(password);
         userDao.save(user);
-        return "redirect:/login";
+        return "redirect:/user";
     }
 
 }
