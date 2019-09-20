@@ -28,11 +28,13 @@ public class LoginController {
     public String success(String email,String password){
 
         Iterable<User> l = userDao.findAll();
+        User s = userDao.findByName(email);
 
 
         logger.info("登录名："+email+" 密码："+password);
+        logger.info("登录名："+s.getName()+" 密码："+s.getPassword());
         //到集合中查找用户是否存在，此处用来模拟数据库验证
-        if (email.equals("1")&&password.equals("1")){
+        if (email.equals(s.getName())&&password.equals(s.getPassword())){
             return "s";
         }
         return "test";
