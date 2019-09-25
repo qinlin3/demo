@@ -39,12 +39,12 @@ public class HomeController {
     }
     @RequestMapping(value = "/new")
     public String create(){
-        return "create";
+        return "x.jsp";
     }
 
     @RequestMapping("/name")
     public void getByName(String email) {
-        User s = userDao.findByName(email);
-        logger.info("登录名："+s.getName());
+        //User s = userDao.findByName(email);
+        //logger.info("登录名："+s.getName());
     }
 }

@@ -20,24 +20,24 @@ public class LoginController {
     private UserDao userDao;
 
     @RequestMapping(value = "/login")
-    public String page(){
+    public String page() {
         return "login";
     }
 
     @RequestMapping(value = "/s")
-    public String success(String email,String password){
+    public String success(String email, String password) {
 
         Iterable<User> l = userDao.findAll();
         User s = userDao.findByName(email);
 
 
-        logger.info("登录名："+email+" 密码："+password);
-        logger.info("登录名："+s.getName()+" 密码："+s.getPassword());
+        logger.info("登录名：" + email + " 密码：" + password);
         //到集合中查找用户是否存在，此处用来模拟数据库验证
-        if (email.equals(s.getName())&&password.equals(s.getPassword())){
+        if (email.equals(s.getName()) && password.equals(s.getPassword())) {
             return "s";
-        }
-        return "test";
-    }
 
+        } else {
+            return "test";
+        }
+    }
 }

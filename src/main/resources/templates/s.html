@@ -1,10 +1,293 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width" name="viewport">
+    <meta name="theme-color" content="#ff9800">
+    <title>QUOO</title>
+
+
+    <!-- css -->
+    <link href="css/base.min.css" rel="stylesheet">
+    <link href="css/project.min.css" rel="stylesheet">
+    <link href="https://fonts.loli.net/css?family=Roboto:300,300italic,400,400italic,500,500italic" rel="stylesheet">
+    <link href="https://fonts.loli.net/css?family=Material+Icons">
+
+
+
+
+
+
+    <!-- favicon -->
+    <!-- ... -->
+
+
+
+
 </head>
-<body>
-hello
+<body class="page-orange">
+<header class="header header-orange header-transparent header-waterfall ui-header">
+    <ul class="nav nav-list pull-left">
+        <div>
+            <a data-toggle="menu" href="#ui_menu">
+                <span class="icon icon-lg text-white">format_align_justify</span>
+            </a>
+        </div>
+    </ul>
+
+    <ul class="nav nav-list pull-right">
+        <div class="dropdown margin-right">
+            <a class="dropdown-toggle padding-left-no padding-right-no" data-toggle="dropdown">
+                <span class="access-hide">742715157@qq.com</span>
+                <span class="icon icon-cd margin-right">account_circle</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-right">
+                <li>
+                    <a class="padding-right-lg waves-attach" href="/user/"><span class="icon icon-lg margin-right">account_box</span>用户中心</a>
+                </li>
+
+                <li>
+                    <a class="padding-right-cd waves-attach" href="/user/logout"><span class="icon icon-lg margin-right">exit_to_app</span>登出</a>
+                </li>
+            </ul>
+
+        </div>
+    </ul>
+</header>
+<nav aria-hidden="true" class="menu menu-left nav-drawer nav-drawer-md" id="ui_menu" tabindex="-1">
+    <div class="menu-scroll">
+        <div class="menu-content">
+            <a class="menu-logo" href="/"><i class="icon icon-lg" >language</i>&nbsp;QUOO</a>
+            <ul class="nav">
+                <li>
+                    <a class="waves-attach" data-toggle="collapse" href="#ui_menu_me">菜单</a>
+                    <ul class="menu-collapse collapse in" id="ui_menu_me">
+                        <li>
+                            <a href="/user">
+                                <i class="icon icon-lg">account_balance_wallet</i>&nbsp;用户中心
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/user/node">
+                                <i class="icon icon-lg">airplanemode_active</i>&nbsp;节点列表
+                            </a>
+                        </li>
+
+
+                        <li>
+                            <a href="/user/edit">
+                                <i class="icon icon-lg">sync_problem</i>&nbsp;资料编辑
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/learn" target="_black">
+                                <i class="icon icon-lg">start</i>&nbsp;使用教程
+                            </a>
+                        </li>
+
+
+
+                        <li>
+                            <a href="/user/invite">
+                                <i class="icon icon-lg">loyalty</i>&nbsp;邀请返利
+                            </a>
+                        </li>
+
+                    </ul>
+                    <a class="waves-attach" data-toggle="collapse" href="#ui_menu_help">商店</a>
+                    <ul class="menu-collapse collapse in" id="ui_menu_help">
+                        <li>
+                            <a href="/user/code">
+                                <i class="icon icon-lg">code</i>&nbsp;<font color="red">账户充值</font>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/user/shop">
+                                <i class="icon icon-lg">shop</i>&nbsp;套餐购买
+                            </a>
+                        </li>
+
+                        <li><a href="/user/bought"><i class="icon icon-lg">shopping_cart</i>&nbsp;购买记录</a></li>
+
+
+
+
+                    </ul>
+
+
+                    <a class="waves-attach" data-toggle="collapse" href="#ui_menu_use">使用</a>
+                    <ul class="menu-collapse collapse in" id="ui_menu_use">
+
+                        <li>
+                            <a href="/user/profile">
+                                <i class="icon icon-lg">account_box</i>&nbsp;账户信息
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/user/relay">
+                                <i class="icon icon-lg">compare_arrows</i>&nbsp;中转规则
+                            </a>
+                        </li>
+
+
+
+                        <li>
+                            <a href="/user/trafficlog">
+                                <i class="icon icon-lg">hourglass_empty</i>&nbsp;流量记录
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/user/ticket">
+                                <i class="icon icon-lg">question_answer</i>&nbsp;工单系统
+                            </a>
+                        </li>
+
+
+                        <li>
+                            <a href="/learn">
+                                <i class="icon icon-lg">start</i>&nbsp;使用教程
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/user/detect/log">
+                                <i class="icon icon-lg">assignment_late</i>&nbsp;审计记录
+                            </a>
+                        </li>
+
+                    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+
+
+
+
+<main class="content">
+    <div class="content-header ui-content-header">
+        <div class="container">
+            <h1 class="content-heading">商品列表</h1>
+        </div>
+    </div>
+    <div class="container">
+        <div class="col-lg-12 col-sm-12">
+            <section class="content-inner margin-top-no">
+
+                <div class="card">
+                    <div class="card-main">
+                        <div class="card-inner">
+                            <p>购买前请先对账户进行 <a href="/user/code" target="_black" title="账户充值">账户充值</a> </p>
+                            <p>套餐等级和速度成正比，等级越高速度越快线路越多，有任何问题请点击右下角按钮联系在线客服 </p>
+                            <p>相同套餐可以叠加购买VIP时间会叠加，<font color="red">不同套餐如果需要叠加购买请先联系在线客服</font></p>
+                            <p>需要套餐升级变更请联系在线客服</font></p>
+                            <p>当前余额：<code>0.00</code> 元</p>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="table-responsive">
+
+
+                        <table class="table ">
+                            <tr>
+                                <th>套餐</th>
+                                <th>价格</th>
+
+                                <th>操作</th>
+
+                            </tr>
+
+                            <form method="post" th:action="@{/shop}">
+
+                            <tr>
+                                <td>
+                                    <input type="text" style="border: 0px" readonly="readonly" name="water" value="2加仑(7.5升)">
+                                </td>
+                                <td>
+                                    <input type="text" style="border: 0px" readonly="readonly" name="price" value="12.00 元">
+                                </td>
+
+                                <td>
+                                    <div>
+                                        <button class="btn btn-brand-accent">购买</button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            </form>
+                            <form method="post" th:action="@{/shop}">
+
+                            <tr>
+                                <td>
+                                    <input type="text" style="border: 0px" readonly="readonly" name="water" value="3加仑(11.3升)">
+                                </td>
+                                <td>
+                                    <input type="text" style="border: 0px" readonly="readonly" name="price" value="16.00 元">
+                                </td>
+
+                                <td>
+                                    <div>
+                                        <button class="btn btn-brand-accent">购买</button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            </form>
+                            <form method="post" th:action="@{/shop}">
+
+                            <tr>
+                                <td>
+                                    <input type="text" style="border: 0px" readonly="readonly" name="water" value="【推荐】5加仑(18.9升)">
+                                </td>
+                                <td>
+                                    <input type="text" style="border: 0px" readonly="readonly" name="price" value="20.00 元">
+                                </td>
+
+                                <td>
+                                    <div>
+                                        <button class="btn btn-brand-accent">购买</button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            </form>
+
+                        </table>
+
+                </div>
+
+    </div>
+</main>
+
+
+<!-- js -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/base.min.js"></script>
+<script src="js/project.min.js"></script>
+
 </body>
 </html>

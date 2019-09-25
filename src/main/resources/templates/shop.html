@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:include="include/bootstrap :: head"></th:block>
+</head>
+<body>
+<div th:replace="include/bootstrap :: nav"></div>
+<div class="jumbotron">
+    <h1>购物车</h1>
+    <table>
+        <tr>
+            <th>水的规格</th>
+        </tr>
+        <tr th:each="s: ${ss}">
+            <td th:text="${s}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
