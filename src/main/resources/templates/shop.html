@@ -12,12 +12,28 @@
     <h1>购物车</h1>
     <table>
         <tr>
-            <th>水的规格</th>
+            <th>水的规格 价格</th>
         </tr>
-        <tr th:each="s: ${ss}">
-            <td th:text="${s}"></td>
+        <tr th:each="s: ${session.waters}">
+            <td th:text="${s}">
+            </td>
+            <td>
+                <a  th:href="@{delete(ss=${s})}">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </td>
+            <!--student/delete(id=${list.id})
+                @RequestMapping("/delete")
+                private String delete(Integer id){
+                studentDao.deleteById(id);
+                log.info("数据删除成功。");
+                return "redirect:/student";
+            -->
+
         </tr>
+
     </table>
+
 </div>
 </body>
 </html>
