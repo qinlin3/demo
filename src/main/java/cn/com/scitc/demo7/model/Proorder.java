@@ -1,26 +1,24 @@
 package cn.com.scitc.demo7.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 public class Proorder {
-    private Integer orderId;
+    private Integer id;
     private String name;
     private String product;
     private String price;
 
     @Id
-    @Column(name = "orderId", nullable = false)
-    public Integer getOrderId() {
-        return orderId;
+    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    public Integer getId() {
+        return id;
     }
 
-    public void setOrderId(Integer orderId) {
-        this.orderId = orderId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     @Basic
@@ -44,7 +42,7 @@ public class Proorder {
     }
 
     @Basic
-    @Column(name = "price", nullable = false, length = 4)
+    @Column(name = "price", nullable = false, length = 20)
     public String getPrice() {
         return price;
     }
@@ -58,7 +56,7 @@ public class Proorder {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Proorder proorder = (Proorder) o;
-        return Objects.equals(orderId, proorder.orderId) &&
+        return Objects.equals(id, proorder.id) &&
                 Objects.equals(name, proorder.name) &&
                 Objects.equals(product, proorder.product) &&
                 Objects.equals(price, proorder.price);
@@ -66,6 +64,6 @@ public class Proorder {
 
     @Override
     public int hashCode() {
-        return Objects.hash(orderId, name, product, price);
+        return Objects.hash(id, name, product, price);
     }
 }
