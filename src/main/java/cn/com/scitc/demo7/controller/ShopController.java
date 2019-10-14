@@ -122,12 +122,25 @@ public class ShopController {
         }*/
         session.removeAttribute("waters");
         session.removeAttribute("prices");
-        return "e";
+        return "h";
     }
 
 
     @RequestMapping(value = "/return")
     public String returnn(HttpServletRequest request,String ss){
-        return "s";
+        HttpSession session = request.getSession();
+        ArrayList name=(ArrayList) session.getAttribute("name");
+        //String n = name.get(0).toString();
+        //logger.info("总价"+ name);
+        if(name != null){
+
+            return "s";
+
+        }
+        else {
+            return "login";
+
+        }
+
     }
 }

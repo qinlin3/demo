@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" readonly="true" value="3" id="time">
+</body>
+<script language="javascript">
+    var t = 3;
+    var time = document.getElementById("time");
+    function fun(){
+        t--;
+        time.value = t;
+        if(t<=0){
+            location.href = "return";
+            clearInterval(inter);
+        }
+    }
+    var inter = setInterval("fun()",1000);
+</script>
+</html>
