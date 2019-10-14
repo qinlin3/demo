@@ -52,6 +52,7 @@ public class ShopController {
                 String nn = (String) prices.get(n);
                 //int a = Integer.parseInt(nn);
                 model.addAttribute("nn",nn);
+                //int m = Integer.parseInt(nn);
                 logger.info("价格：" + nn );
             }
             model.addAttribute("ss",waters);
@@ -81,17 +82,23 @@ public class ShopController {
     }
     @RequestMapping(value = "/pay")
     public String pay(HttpServletRequest request,String ss){
+
+
+        int all = 0;
         HttpSession session = request.getSession();
 
         ArrayList prices=(ArrayList) session.getAttribute("prices");
         ArrayList name=(ArrayList) session.getAttribute("name");
         ArrayList waters=(ArrayList) session.getAttribute("waters");
 
-
+        //int a = prices.size();
+        //int[] p = new int[a];
+        //logger.info("总价"+ a);
         for(int l = 0; l < prices.size(); l++){
             String s = (String) prices.get(l).toString();
-            String n = (String) name.get(l).toString();
+            String n = (String) name.get(0).toString();
             String w = (String) waters.get(l).toString();
+
 
             Proorder proorder = new Proorder();
 
@@ -100,11 +107,27 @@ public class ShopController {
             proorder.setProduct(w);
 
             proorderDao.save(proorder);
-
+            //int p = Integer.parseInt(s);
+            //all = all + p;
             //int s1 = Integer.parseInt(s);
             //model.addAttribute("ss",ss);
-            logger.info("价格：" + s+"用户名：" + n+"产品：" + w);
+            //logger.info("价格：" + s+"用户名：" + n+"产品：" + w +"总价"+ all);
         }
+        /*for (int i = 0; i < prices.size();i++){
+            String s = (String) prices.get(i).toString();
+            p[i] = Integer.parseInt(s);
+             //all = all + p;
+            logger.info("总价"+ p[i]);
+
+        }*/
+        session.removeAttribute("waters");
+        session.removeAttribute("prices");
         return "e";
+    }
+
+
+    @RequestMapping(value = "/return")
+    public String returnn(HttpServletRequest request,String ss){
+        return "s";
     }
 }
