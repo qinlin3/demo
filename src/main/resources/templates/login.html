@@ -5,6 +5,12 @@
     <!-- css -->
     <link href="/css/base.min.css" rel="stylesheet">
     <link href="/css/project.min.css" rel="stylesheet">
+
+
+    <!--<th:block th:include="include/bootstrap :: head"></th:block>
+    <head th:include="include/bootstrap :: head">
+    <link href="/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">-->
+
 </head>
 <style>
     .divcss5{ position:fixed; bottom:0;}
@@ -28,10 +34,10 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-right">
                 <li>
-                    <a class="padding-right-lg waves-attach" href="/auth/login"><span class="icon icon-lg margin-right">vpn_key</span>登录</a>
+                    <a class="padding-right-lg waves-attach" href="/login"><span class="icon icon-lg margin-right">vpn_key</span>登录</a>
                 </li>
                 <li>
-                    <a class="padding-right-lg waves-attach" href="/auth/register"><span class="icon icon-lg margin-right">person_add</span>注册</a>
+                    <a class="padding-right-lg waves-attach" href="/register"><span class="icon icon-lg margin-right">person_add</span>注册</a>
                 </li>
             </ul>
 
@@ -42,6 +48,7 @@
     <div class="menu-scroll">
         <div class="menu-content">
             <a class="menu-logo" href="/"><i class="icon icon-lg">language</i>&nbsp;点击返回官网</a>
+            <!--<i class="glyphicon glyphicon-globe"></i><i class="icon icon-lg">language</i>-->
             <ul class="nav">
 
                 <li>
@@ -64,7 +71,6 @@
     </div>
 </nav>
 
-<literal><script type="text/javascript"> window.$crisp=[];window.CRISP_WEBSITE_ID="41ff1779-d431-4d9c-8079-31d6930129a7";$crisp.push(["set", "user:email", ""]);(function(){ d=document;s=d.createElement("script"); s.src="https://client.crisp.chat/l.js"; s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})(); </script></literal>
 
 
 <main class="content">
@@ -181,10 +187,15 @@
 
 <!-- js -->
 <script src="/js/jquery.min.js"></script>
-<script src="//static.geetest.com/static/tools/gt.js"></script>
+
 
 <script src="/js/base.min.js"></script>
-<script src="js/project.min.js"></script>
+
+<!--<script src="/js/jquery.min.js"></script>
+<script src="//static.geetest.com/static/tools/gt.js"></script>
 <script type="text/javascript" color="217,113,24" opacity="0.8" count="99" src="/assets/js/canvas-nest.min.js"></script>
+<script src="/js/base.min.js"></script>
+<script src="js/project.min.js"></script>
+-->
 </body>
 </html>
