@@ -3,29 +3,304 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <th:block th:include="include/bootstrap :: head"></th:block>
+    <title>QUOO</title>
+    <!-- css
+     <th:block th:include="include/bootstrap :: head"></th:block>
+     -->
+    <link href="/css/base.min.css" rel="stylesheet">
+    <link href="/css/project.min.css" rel="stylesheet">
+
 </head>
-<body>
-    <div th:replace="include/bootstrap :: nav"></div>
-    <div class="jumbotron">
-        <h1>学生信息表</h1>
-        <table>
-            <tr>
-                <th>id</th>
-                <th>name</th>
-                <th>password</th>
+<body class="page-orange">
+<header class="header header-orange header-transparent header-waterfall ui-header">
+    <ul class="nav nav-list pull-left">
+        <div>
+            <a data-toggle="menu" href="#ui_menu">
+                <span class="icon icon-lg text-white">format_align_justify</span>
+            </a>
+        </div>
+    </ul>
+
+    <ul class="nav nav-list pull-right">
+        <div class="dropdown margin-right">
+            <a class="dropdown-toggle padding-left-no padding-right-no" data-toggle="dropdown">
+                <span class="access-hide">742715157@qq.com</span>
+                <span class="icon icon-cd margin-right">account_circle</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-right">
+                <li>
+                    <a class="padding-right-lg waves-attach" href="/user/"><span class="icon icon-lg margin-right">account_box</span>用户中心</a>
+                </li>
+
+                <li>
+                    <a class="padding-right-cd waves-attach" href="/user/logout"><span class="icon icon-lg margin-right">exit_to_app</span>登出</a>
+                </li>
+            </ul>
+
+        </div>
+    </ul>
+</header>
+<nav aria-hidden="true" class="menu menu-left nav-drawer nav-drawer-md" id="ui_menu" tabindex="-1">
+    <div class="menu-scroll">
+        <div class="menu-content">
+            <a class="menu-logo" href="/"><i class="icon icon-lg" >language</i>&nbsp;QUOO</a>
+            <ul class="nav">
+                <li>
+                    <a class="waves-attach" data-toggle="collapse" href="#ui_menu_me">菜单</a>
+                    <ul class="menu-collapse collapse in" id="ui_menu_me">
+                        <li>
+                            <a href="/user">
+                                <i class="icon icon-lg">account_balance_wallet</i>&nbsp;用户中心
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/user/node">
+                                <i class="icon icon-lg">airplanemode_active</i>&nbsp;节点列表
+                            </a>
+                        </li>
 
 
-            </tr>
-            <tr th:each="l:${l}">
-                <td th:text="${l.id}"></td>
-                <td th:text="${l.name}"></td>
-                <td th:text="${l.password}"></td>
+                        <li>
+                            <a href="/user/edit">
+                                <i class="icon icon-lg">sync_problem</i>&nbsp;资料编辑
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/learn" target="_black">
+                                <i class="icon icon-lg">start</i>&nbsp;使用教程
+                            </a>
+                        </li>
 
 
-            </tr>
-        </table>
+
+                        <li>
+                            <a href="/user/invite">
+                                <i class="icon icon-lg">loyalty</i>&nbsp;邀请返利
+                            </a>
+                        </li>
+
+                    </ul>
+                    <a class="waves-attach" data-toggle="collapse" href="#ui_menu_help">商店</a>
+                    <ul class="menu-collapse collapse in" id="ui_menu_help">
+                        <li>
+                            <a href="/user/code">
+                                <i class="icon icon-lg">code</i>&nbsp;<font color="red">账户充值</font>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/user/shop">
+                                <i class="icon icon-lg">shop</i>&nbsp;套餐购买
+                            </a>
+                        </li>
+
+                        <li><a href="/user/bought"><i class="icon icon-lg">shopping_cart</i>&nbsp;购买记录</a></li>
+
+
+
+
+                    </ul>
+
+
+                    <a class="waves-attach" data-toggle="collapse" href="#ui_menu_use">使用</a>
+                    <ul class="menu-collapse collapse in" id="ui_menu_use">
+
+                        <li>
+                            <a href="/user/profile">
+                                <i class="icon icon-lg">account_box</i>&nbsp;账户信息
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/user/relay">
+                                <i class="icon icon-lg">compare_arrows</i>&nbsp;中转规则
+                            </a>
+                        </li>
+
+
+
+                        <li>
+                            <a href="/user/trafficlog">
+                                <i class="icon icon-lg">hourglass_empty</i>&nbsp;流量记录
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/user/ticket">
+                                <i class="icon icon-lg">question_answer</i>&nbsp;工单系统
+                            </a>
+                        </li>
+
+
+                        <li>
+                            <a href="/learn">
+                                <i class="icon icon-lg">start</i>&nbsp;使用教程
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/user/detect/log">
+                                <i class="icon icon-lg">assignment_late</i>&nbsp;审计记录
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </div>
+</nav>
+<main class="content">
+    <div class="content-header ui-content-header">
+        <div class="container">
+            <h1 class="content-heading">我的账户</h1>
+        </div>
+    </div>
+    <div class="container">
+        <section class="content-inner margin-top-no">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="card margin-bottom-no">
+                        <div class="card-main">
+                            <div class="card-inner">
+                                <div class="card-inner">
+                                    <p class="card-heading">我的帐号</p>
+                                    <dl class="dl-horizontal">
+                                        <dt>用户名</dt>
+                                        <dd>742715157@qq.com</dd>
+                                        <dt>邮箱</dt>
+                                        <dd>742715157@qq.com</dd>
+                                    </dl>
+                                </div>
+                                <div class="card-action">
+                                    <div class="card-action-btn pull-left">
+                                        <a class="btn btn-flat waves-attach" href="kill"><span class="icon">check</span>&nbsp;删除我的账户</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-main">
+                            <div class="card-inner margin-bottom-no">
+                                <p class="card-heading">最近五分钟使用IP</p>
+                                <p>请确认都为自己的IP，如有异常请及时修改连接密码。</p>
+                                <div class="card-table">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <tr>
+
+                                                <th>IP</th>
+                                                <th>归属地</th>
+                                            </tr>
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="card">
+                        <div class="card-main">
+                            <div class="card-inner margin-bottom-no">
+                                <p class="card-heading">最近十次登录IP</p>
+                                <p>请确认都为自己的IP，如有异常请及时修改密码。</p>
+                                <div class="card-table">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <tr>
+
+                                                <th>IP</th>
+                                                <th>归属地</th>
+                                            </tr>
+                                            <tr>
+
+                                                <td>118.113.11.110</td>
+                                                <td>四川省成都市电信</td>
+                                            </tr>
+                                            <tr>
+
+                                                <td>118.113.11.64</td>
+                                                <td>四川省成都市电信</td>
+                                            </tr>
+                                            <tr>
+
+                                                <td>118.113.10.222</td>
+                                                <td>四川省成都市电信</td>
+                                            </tr>
+                                            <tr>
+
+                                                <td>118.113.11.234</td>
+                                                <td>四川省成都市电信</td>
+                                            </tr>
+                                            <tr>
+
+                                                <td>103.86.69.25</td>
+                                                <td>美国加利福尼亚州洛杉矶上海花卷信息科技有限公司</td>
+                                            </tr>
+                                            <tr>
+
+                                                <td>61.157.243.121</td>
+                                                <td>四川省广元市电信</td>
+                                            </tr>
+                                            <tr>
+
+                                                <td>171.209.125.77</td>
+                                                <td>四川省成都市电信</td>
+                                            </tr>
+                                            <tr>
+
+                                                <td>61.157.243.119</td>
+                                                <td>四川省广元市电信</td>
+                                            </tr>
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="card margin-bottom-no">
+                        <div class="card-main">
+                            <div class="card-inner">
+                                <div class="card-inner">
+                                    <p class="card-heading">返利记录</p>
+                                    <div class="card-table">
+                                        <div class="table-responsive">
+
+                                            <table class="table">
+                                                <thead>
+                                                <tr>
+                                                    <th>###</th>
+                                                    <th>返利用户</th>
+                                                    <th>返利金额</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+</main>
 </body>
 </html>

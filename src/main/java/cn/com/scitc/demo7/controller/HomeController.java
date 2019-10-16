@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 @RequestMapping(value = "/")
 public class HomeController {
@@ -30,10 +32,37 @@ public class HomeController {
         return "studentfrom";
     }
     @RequestMapping(value = "/user")
-    public String userfrom(Model model){
+    public String userfrom(HttpServletRequest request,Model model){
+        //String ip = request.getRemoteAddr();
+
+            String ip = request.getHeader("x-forwarded-for");
+            if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+                ip = request.getHeader("http_client_ip");
+            }
+            if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+                ip = request.getRemoteAddr();
+            }
+            if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+                ip = request.getHeader("Proxy-Client-IP");
+            }
+            if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+                ip = request.getHeader("WL-Proxy-Client-IP");
+            }
+            if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+                ip = request.getHeader("HTTP_X_FORWARDED_FOR");
+            }
+            // 如果是多级代理，那么取第一个ip为客户ip
+            if (ip != null && ip.indexOf(",") != -1) {
+                ip = ip.substring(ip.lastIndexOf(",") + 1, ip.length()).trim();
+            }
+
+
         Iterable<User> l = userDao.findAll();
         model.addAttribute("l",l);
+
+        logger.info("价格：" + ip );
         return "userfrom";
+
     }
     @RequestMapping(value = "/new")
     public String create(){
