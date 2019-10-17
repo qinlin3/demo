@@ -54,4 +54,18 @@ public class LoginController {
             return "test";
         }
     }
+
+    @RequestMapping(value = "/logout")
+    public String page1( HttpServletRequest request) {
+
+        HttpSession session = request.getSession();
+
+        session.invalidate();
+
+        /*ArrayList name=(ArrayList) session.getAttribute("name");
+        String n = name.get(0).toString();
+        logger.info("验证名字："+n);*/
+        //logger.info(session.getAttributeNames(name););
+        return "login";
+    }
 }
