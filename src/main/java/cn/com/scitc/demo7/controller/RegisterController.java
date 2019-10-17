@@ -21,12 +21,19 @@ public class RegisterController {
     }
     @PostMapping("/create")
     private String createNew(String email,String password){
-        User user = new User();
-        user.setName(email);
-        user.setPassword(password);
-        user.setCredit(100);
-        userDao.save(user);
-        return "redirect:/userlist";
+        User s = userDao.findByName(email);
+        if(s == null){
+            User user = new User();
+            user.setName(email);
+            user.setPassword(password);
+            user.setCredit(100);
+            userDao.save(user);
+            return "redirect:/userlist";
+        }else {
+            return "register";
+        }
+
+
     }
 
     @RequestMapping(value = "/userlist")
