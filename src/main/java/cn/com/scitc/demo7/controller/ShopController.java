@@ -1,7 +1,9 @@
 package cn.com.scitc.demo7.controller;
 
 import cn.com.scitc.demo7.dao.ProorderDao;
+import cn.com.scitc.demo7.dao.UserDao;
 import cn.com.scitc.demo7.model.Proorder;
+import cn.com.scitc.demo7.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,8 @@ import java.util.*;
 public class ShopController {
     @Autowired
     ProorderDao proorderDao;
+    @Autowired
+    private UserDao userDao;
     private Logger logger = LoggerFactory.getLogger(ShopController.class.getSimpleName());
     @RequestMapping(value = "/shop")
     public String shop(HttpServletRequest request, Model model){
@@ -92,11 +96,13 @@ public class ShopController {
         ArrayList waters=(ArrayList) session.getAttribute("waters");
 
         //int a = prices.size();
-        //int[] p = new int[a];
+        int[] p = new int[100];
+        int a = 0;
+        String n = (String) name.get(0).toString();
         //logger.info("总价"+ a);
         for(int l = 0; l < prices.size(); l++){
             String s = (String) prices.get(l).toString();
-            String n = (String) name.get(0).toString();
+            //String n = (String) name.get(0).toString();
             String w = (String) waters.get(l).toString();
 
 
@@ -113,13 +119,25 @@ public class ShopController {
             //model.addAttribute("ss",ss);
             //logger.info("价格：" + s+"用户名：" + n+"产品：" + w +"总价"+ all);
         }
-        /*for (int i = 0; i < prices.size();i++){
+        for (int i = 0; i < prices.size();i++){
             String s = (String) prices.get(i).toString();
             p[i] = Integer.parseInt(s);
+            a = a + p[i];
              //all = all + p;
-            logger.info("总价"+ p[i]);
+            //logger.info("总价"+ p[i]);
+            logger.info("1总价:"+ a);
 
-        }*/
+        }
+
+        User s = userDao.findByName(n);
+        int m = s.getCredit();
+        int q = m - a;
+        s.setCredit(q);
+        userDao.save(s);
+
+        logger.info("名字:"+ s.getName());
+        logger.info("剩余金额"+ q);
+
         session.removeAttribute("waters");
         session.removeAttribute("prices");
         return "h";
