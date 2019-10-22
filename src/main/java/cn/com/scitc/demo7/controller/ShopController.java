@@ -13,6 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Controller
@@ -85,7 +89,7 @@ public class ShopController {
         return "shop";
     }
     @RequestMapping(value = "/pay")
-    public String pay(HttpServletRequest request,String ss){
+    public String pay(HttpServletRequest request,String ss) throws ParseException {
 
 
         int all = 0;
@@ -96,11 +100,26 @@ public class ShopController {
         ArrayList waters=(ArrayList) session.getAttribute("waters");
 
         //int a = prices.size();
+        //Date now = new Date();
+        //Date time = null;
+        //SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        //System.out.println(df.format(now));// new Date()为获取当前系统时间
+        //time= df.parse(df.format(new Date()));
+        //System.out.println(time);
+        /*java.util.Date dt = new java.util.Date();
+        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String currentTime = sdf.format(dt);*/
+        /*SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String date1 = formatter.format(new Date());
+        Date date = formatter.parse(date1);*/
+        Date date = new Date();
+        Timestamp timeStamep = new Timestamp(date.getTime());
+
         int[] p = new int[100];
         int a = 0;
         String n = (String) name.get(0).toString();
         //logger.info("总价"+ a);
-        for(int l = 0; l < prices.size(); l++){
+        for(int l = 0; l < waters.size(); l++){
             String s = (String) prices.get(l).toString();
             //String n = (String) name.get(0).toString();
             String w = (String) waters.get(l).toString();
@@ -111,6 +130,7 @@ public class ShopController {
             proorder.setPrice(s);
             proorder.setName(n);
             proorder.setProduct(w);
+            proorder.setDate(timeStamep);
 
             proorderDao.save(proorder);
             //int p = Integer.parseInt(s);
@@ -140,6 +160,8 @@ public class ShopController {
 
         session.removeAttribute("waters");
         session.removeAttribute("prices");
+
+
         return "h";
     }
 

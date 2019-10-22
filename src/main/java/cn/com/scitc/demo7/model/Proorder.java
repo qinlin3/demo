@@ -1,6 +1,8 @@
 package cn.com.scitc.demo7.model;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -9,6 +11,17 @@ public class Proorder {
     private String name;
     private String product;
     private String price;
+    private Timestamp date;
+
+    @Basic
+    @Column(name = "date", nullable = false)
+    public Timestamp getDate() {
+        return date;
+    }
+
+    public void setDate(Timestamp date) {
+        this.date = date;
+    }
 
     @Id
     @Column(name = "id", nullable = false)
@@ -66,4 +79,6 @@ public class Proorder {
     public int hashCode() {
         return Objects.hash(id, name, product, price);
     }
+
+
 }

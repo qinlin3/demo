@@ -17,5 +17,8 @@
         <property name="price">
             <column name="price" sql-type="varchar(20)" length="20"/>
         </property>
+        <property name="date">
+            <column name="date" sql-type="datetime"/>
+        </property>
     </class>
 </hibernate-mapping>

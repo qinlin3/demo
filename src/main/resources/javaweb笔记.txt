@@ -84,6 +84,7 @@ create table proOrder
     name                 varchar(20) not null comment '用户姓名',
     product                 varchar(20) not null comment '产品名称',
     price                  varchar(20) not null comment '产品价格',
+    date                   datetime not null comment '日期',
     primary key (id)
 );
 
