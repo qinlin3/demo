@@ -86,6 +86,21 @@ public class HomeController {
         return "test1";
     }
 
+    @RequestMapping(value = "/shoplist")
+    public String shoplist(HttpServletRequest request,String ss){
+
+            HttpSession session = request.getSession();
+            ArrayList name=(ArrayList) session.getAttribute("name");
+            //String n = name.get(0).toString();
+            //logger.info("总价"+ name);
+            if(name != null){
+                return "s";
+            }
+            else {
+                return "login";
+            }
+    }
+
     @RequestMapping("/name")
     public void getByName(String email) {
         //User s = userDao.findByName(email);
