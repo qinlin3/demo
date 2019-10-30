@@ -44,117 +44,7 @@
         </div>
     </ul>
 </header>
-<nav aria-hidden="true" class="menu menu-left nav-drawer nav-drawer-md" id="ui_menu" tabindex="-1">
-    <div class="menu-scroll">
-        <div class="menu-content">
-            <a class="menu-logo" href="/"><i class="icon icon-lg" >language</i>&nbsp;QUOO</a>
-            <ul class="nav">
-                <li>
-                    <a class="waves-attach" data-toggle="collapse" href="#ui_menu_me">菜单</a>
-                    <ul class="menu-collapse collapse in" id="ui_menu_me">
-                        <li>
-                            <a href="/user">
-                                <i class="icon icon-lg">account_balance_wallet</i>&nbsp;用户中心
-                            </a>
-                        </li>
 
-                        <li>
-                            <a href="/user/node">
-                                <i class="icon icon-lg">airplanemode_active</i>&nbsp;节点列表
-                            </a>
-                        </li>
-
-
-                        <li>
-                            <a href="/user/edit">
-                                <i class="icon icon-lg">sync_problem</i>&nbsp;资料编辑
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="/learn" target="_black">
-                                <i class="icon icon-lg">start</i>&nbsp;使用教程
-                            </a>
-                        </li>
-
-
-
-                        <li>
-                            <a href="/user/invite">
-                                <i class="icon icon-lg">loyalty</i>&nbsp;邀请返利
-                            </a>
-                        </li>
-
-                    </ul>
-                    <a class="waves-attach" data-toggle="collapse" href="#ui_menu_help">商店</a>
-                    <ul class="menu-collapse collapse in" id="ui_menu_help">
-                        <li>
-                            <a href="/user/code">
-                                <i class="icon icon-lg">code</i>&nbsp;<font color="red">账户充值</font>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="/shoplist">
-                                <i class="icon icon-lg">shop</i>&nbsp;套餐购买
-                            </a>
-                        </li>
-
-                        <li><a href="/user/bought"><i class="icon icon-lg">shopping_cart</i>&nbsp;购买记录</a></li>
-
-
-
-
-                    </ul>
-
-
-                    <a class="waves-attach" data-toggle="collapse" href="#ui_menu_use">使用</a>
-                    <ul class="menu-collapse collapse in" id="ui_menu_use">
-
-                        <li>
-                            <a href="/user/profile">
-                                <i class="icon icon-lg">account_box</i>&nbsp;账户信息
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="/user/relay">
-                                <i class="icon icon-lg">compare_arrows</i>&nbsp;中转规则
-                            </a>
-                        </li>
-
-
-
-                        <li>
-                            <a href="/user/trafficlog">
-                                <i class="icon icon-lg">hourglass_empty</i>&nbsp;流量记录
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="/user/ticket">
-                                <i class="icon icon-lg">question_answer</i>&nbsp;工单系统
-                            </a>
-                        </li>
-
-
-                        <li>
-                            <a href="/learn">
-                                <i class="icon icon-lg">start</i>&nbsp;使用教程
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/user/detect/log">
-                                <i class="icon icon-lg">assignment_late</i>&nbsp;审计记录
-                            </a>
-                        </li>
-
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
 <main class="content">
     <div class="content-header ui-content-header">
         <div class="container">
@@ -173,16 +63,25 @@
                                         <a href="/edit">
                                             <i class="icon icon-lg">sync_problem</i>&nbsp;地址设置
                                         </a>
-                                    <dl class="dl-horizontal">
-                                        <dt>用户名</dt>
-                                        <dd><td th:text="${name}"></td></dd>
-                                        <dt>邮箱</dt>
-                                        <dd>742715157@qq.com</dd>
-                                        <dt>积分</dt>
-                                        <dd><td th:text="${credit}"></td></dd>
-                                        <dt>地址</dt>
-                                        <dd><td th:text="${address}"></td></dd>
-                                    </dl>
+                                    <form method="post" th:action="@{/editAddress}">
+
+                                        <div class="form-group form-group-label">
+                                            <div class="row">
+                                                <div class="col-md-10 col-md-push-1">
+                                                    <label class="floating-label" for="email">地址（栋，楼，寝室号）例如1栋2楼12号寝室</label>
+                                                    <input class="form-control" id="email" type="text" name="address">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-10 col-md-push-1">
+                                                    <button id="tos" type="submit" class="btn btn-block btn-brand waves-attach waves-light">修改</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                                 <div class="card-action">
                                     <div class="card-action-btn pull-left">

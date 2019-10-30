@@ -94,3 +94,7 @@ truncate table proorder;
 1. session.invalidate();//移出所有数据
 2. session.Abandon()；//给session赋空值
 3. session.removeAttribute("user");//根据参数清除对应的值
+
+@Id
+    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)

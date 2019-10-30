@@ -9,6 +9,7 @@ public class User {
     private String name;
     private String password;
     private Integer credit;
+    private String address;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -65,5 +66,13 @@ public class User {
     @Override
     public int hashCode() {
         return Objects.hash(id, name, password, credit);
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

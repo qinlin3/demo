@@ -75,6 +75,9 @@ public class HomeController {
         String credit = s.getCredit().toString();
         model.addAttribute("credit",credit);
 
+        String address = s.getAddress();
+        model.addAttribute("address",address);
+
 
 
         /*Iterable<User> l = userDao.findAll();
@@ -85,6 +88,25 @@ public class HomeController {
         return "userfrom";
 
     }
+
+    @RequestMapping(value = "/edit")
+    public String edit(){
+        return "address";
+    }
+
+    @RequestMapping(value = "/editAddress")
+    public String editAddress(String address,HttpServletRequest request){
+        HttpSession session = request.getSession();
+        ArrayList name=(ArrayList) session.getAttribute("name");
+        String n = (String) name.get(0).toString();
+        User s = userDao.findByName(n);
+        s.setAddress(address);
+        userDao.save(s);
+        logger.info("名字:"+ n);
+        logger.info("地址"+ address);
+        return "n";
+    }
+
     @RequestMapping(value = "/new")
     public String create(){
         return "test1";
