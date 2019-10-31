@@ -12,6 +12,7 @@ public class Proorder {
     private String product;
     private String price;
     private Timestamp date;
+    private String address;
 
     @Basic
     @Column(name = "date", nullable = false)
@@ -80,5 +81,13 @@ public class Proorder {
         return Objects.hash(id, name, product, price);
     }
 
+    @Basic
+    @Column(name = "address", nullable = true, length = 20)
+    public String getAddress() {
+        return address;
+    }
 
+    public void setAddress(String address) {
+        this.address = address;
+    }
 }

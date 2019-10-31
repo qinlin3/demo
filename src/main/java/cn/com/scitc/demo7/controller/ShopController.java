@@ -118,11 +118,14 @@ public class ShopController {
         int[] p = new int[100];
         int a = 0;
         String n = (String) name.get(0).toString();
-        //logger.info("总价"+ a);
+        User u = userDao.findByName(n);
+        String address = u.getAddress();
+        logger.info("地址1："+ address);
         for(int l = 0; l < waters.size(); l++){
             String s = (String) prices.get(l).toString();
             //String n = (String) name.get(0).toString();
             String w = (String) waters.get(l).toString();
+
 
 
             Proorder proorder = new Proorder();
@@ -131,6 +134,8 @@ public class ShopController {
             proorder.setName(n);
             proorder.setProduct(w);
             proorder.setDate(timeStamep);
+            proorder.setAddress(address);
+
 
             proorderDao.save(proorder);
             //int p = Integer.parseInt(s);
@@ -167,11 +172,15 @@ public class ShopController {
 
 
     @RequestMapping(value = "/return")
-    public String returnn(HttpServletRequest request,String ss){
+    public String returnn(HttpServletRequest request,String ss,Model model){
         HttpSession session = request.getSession();
         ArrayList name=(ArrayList) session.getAttribute("name");
         //String n = name.get(0).toString();
         //logger.info("总价"+ name);
+        String n = (String) name.get(0).toString();
+        User u = userDao.findByName(n);
+        String credit = u.getCredit().toString();
+        model.addAttribute("credit",credit);
         if(name != null){
 
             return "s";

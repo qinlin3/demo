@@ -172,12 +172,16 @@ public class HomeController {
     }*/
 
     @RequestMapping(value = "/shoplist")
-    public String shoplist(HttpServletRequest request,String ss){
+    public String shoplist(HttpServletRequest request,String ss,Model model){
 
             HttpSession session = request.getSession();
             ArrayList name=(ArrayList) session.getAttribute("name");
             //String n = name.get(0).toString();
             //logger.info("总价"+ name);
+            String n = (String) name.get(0).toString();
+            User u = userDao.findByName(n);
+            String credit = u.getCredit().toString();
+            model.addAttribute("credit",credit);
             if(name != null){
                 return "s";
             }
