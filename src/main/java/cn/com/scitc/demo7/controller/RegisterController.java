@@ -115,7 +115,8 @@ public String sendMsg(String phoneNumber,HttpServletRequest request) {
             user.setPassword(password);
             user.setCredit(100);
             userDao.save(user);
-            return "redirect:/userlist";
+            return "m";
+            //return "redirect:/userlist";
         }else {
             return "register";
         }
