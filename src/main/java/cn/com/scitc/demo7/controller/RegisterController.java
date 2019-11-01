@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.security.auth.Subject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -73,10 +74,11 @@ public class RegisterController {
     }*/
 @RequestMapping("/sendMsg")
 @ResponseBody
-public String sendMsg(String phoneNumber) {
-
+public String sendMsg(String phoneNumber,HttpServletRequest request) {
+    HttpSession session = request.getSession();
     String randomNum = RandomUtil.getRandom(6);
-    logger.info("名字"+phoneNumber);
+    session.setAttribute("code",randomNum);
+    logger.info("名字"+randomNum);
     //session中保存我后台生成的code,为了将来拿出来与用户提交的进行比较。
     SendSms.send(phoneNumber,randomNum);
     return null;
@@ -101,9 +103,13 @@ public String sendMsg(String phoneNumber) {
     }*/
 
     @PostMapping("/create")
-    private String createNew(String email,String password){
+    private String createNew(String email,String password,String email_code,HttpServletRequest request){
+        HttpSession session = request.getSession();
+        String code = session.getAttribute("code").toString();
+        logger.info("名字1:"+code);
+        logger.info("名字2:"+email_code);
         User s = userDao.findByName(email);
-        if(s == null){
+        if(s == null && code.equals(email_code)){
             User user = new User();
             user.setName(email);
             user.setPassword(password);
