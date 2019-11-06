@@ -27,14 +27,18 @@ public class LoginController {
 
     @RequestMapping(value = "/s")
     public String success(String email, String password, HttpServletRequest request, Model model) {
-
+        Iterable<User> l = userDao.findAll();
+        User s = userDao.findByName(email);
+        if (s == null){
+            return "test";
+        }
 
         HttpSession session = request.getSession();
+        //获取session中的name；
         ArrayList name=(ArrayList) session.getAttribute("name");
 
 
-        Iterable<User> l = userDao.findAll();
-        User s = userDao.findByName(email);
+
 
         String credit = s.getCredit().toString();
         model.addAttribute("credit",credit);

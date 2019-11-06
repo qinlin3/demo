@@ -117,6 +117,11 @@ public class HomeController {
         return "video";
     }
 
+    @RequestMapping(value = "/videotest")
+    public String videotest(){
+        return "video1";
+    }
+
     /*@ResponseBody
     @RequestMapping(value = "/getVideoSrc")
     public OutputStream getVideoSrc(HttpServletRequest httpServletRequest,
