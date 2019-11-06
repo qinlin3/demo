@@ -38,6 +38,25 @@ public class ResetController {
 
         //model.addAttribute("name",n);
 
-        return "user";
+        return "login";
+    }
+    @RequestMapping(value = "/password")
+    public String password(String email,String password,String email_code,HttpServletRequest request){
+        HttpSession session = request.getSession();
+        String code = session.getAttribute("code").toString();
+        logger.info("名字1:"+code);
+        logger.info("名字2:"+email_code);
+        User s = userDao.findByName(email);
+        if(s != null && code.equals(email_code)){
+            /*User user = new User();
+            user.setName(email);
+            user.setPassword(password);
+            user.setCredit(100);
+            userDao.save(user);*/
+            return "token";
+            //return "redirect:/userlist";
+        }else {
+            return "test";
+        }
     }
 }

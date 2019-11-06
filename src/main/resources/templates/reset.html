@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
@@ -11,7 +11,6 @@
     <link href="css/project.min.css" rel="stylesheet">
     <link href="https://fonts.loli.net/css?family=Roboto:300,300italic,400,400italic,500,500italic" rel="stylesheet">
     <link href="https://fonts.loli.net/css?family=Material+Icons">
-
     <!-- favicon -->
     <!-- ... -->
 </head>
@@ -37,10 +36,10 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-right">
                 <li>
-                    <a class="padding-right-lg waves-attach" href="/auth/login"><span class="icon icon-lg margin-right">vpn_key</span>登录</a>
+                    <a class="padding-right-lg waves-attach" href="/login"><span class="icon icon-lg margin-right">vpn_key</span>登录</a>
                 </li>
                 <li>
-                    <a class="padding-right-lg waves-attach" href="/auth/register"><span class="icon icon-lg margin-right">person_add</span>注册</a>
+                    <a class="padding-right-lg waves-attach" href="/register"><span class="icon icon-lg margin-right">person_add</span>注册</a>
                 </li>
             </ul>
 
@@ -73,8 +72,6 @@
     </div>
 </nav>
 
-<literal><script type="text/javascript"> window.$crisp=[];window.CRISP_WEBSITE_ID="41ff1779-d431-4d9c-8079-31d6930129a7";$crisp.push(["set", "user:email", ""]);(function(){ d=document;s=d.createElement("script"); s.src="https://client.crisp.chat/l.js"; s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})(); </script></literal>
-
 
 
 
@@ -96,76 +93,47 @@
                                 </p>
 
 
-
-                                <div class="form-group form-group-label">
-                                    <div class="row">
-                                        <div class="col-md-10 col-md-push-1">
-                                            <label class="floating-label" for="email">邮箱</label>
-                                            <input class="form-control" id="email" type="text">
+                                <form method="post" th:action="@{/password}">
+                                    <div class="form-group form-group-label">
+                                        <div class="row">
+                                            <div class="col-md-10 col-md-push-1">
+                                                <label class="floating-label" for="email">手机号(联系方式请认真对待)</label>
+                                                <input class="form-control" id="email" type="text" name="email">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-10 col-md-push-1">
-                                            <button id="reset" type="submit" class="btn btn-block btn-brand waves-attach waves-light">重置密码</button>
-                                            <a href="" onclick="return false;" data-toggle='modal' data-target='#email_nrcy_modal'>收不到验证码？点击这里</a>
+                                    <div class="form-group form-group-label">
+                                        <div class="row">
+                                            <div class="col-md-10 col-md-push-1">
+                                                <label class="floating-label" for="email_code">验证码</label>
+                                                <input class="form-control" id="email_code" type="text" name="email_code">
+                                                <!--<div class="form-group">
+                                                    <input type="button" id="email_verify" class="btn btn-block btn-brand-accent waves-attach waves-light" onclick="getMsgNum(this)" value="免费获取验证码">
+                                                </div>
+                                                <input type="button" id="email_verify" class="btn btn-block btn-brand-accent waves-attach waves-light" onclick="getMsgNum(this)" value="">-->
+                                                <button type="button" id="email_verify" class="btn btn-block btn-brand-accent waves-attach waves-light" onclick="getMsgNum(this)">点击获取验证码</button>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-
-
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-10 col-md-push-1">
+                                                <button id="reset" type="submit" class="btn btn-block btn-brand waves-attach waves-light">重置密码</button>
+                                                <a href="" onclick="return false;" data-toggle='modal' data-target='#email_nrcy_modal'>收不到验证码？点击这里</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
 
                             </div>
                         </div>
                     </div>
-
-
-                    <div aria-hidden="true" class="modal modal-va-middle fade" id="result" role="dialog" tabindex="-1">
-                        <div class="modal-dialog modal-xs">
-                            <div class="modal-content">
-                                <div class="modal-inner">
-                                    <p class="h5 margin-top-sm text-black-hint" id="msg"></p>
-                                </div>
-                                <div class="modal-footer">
-                                    <p class="text-right"><button class="btn btn-flat btn-brand-accent waves-attach" data-dismiss="modal" type="button" id="result_ok">知道了</button></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div aria-hidden="true" class="modal modal-va-middle fade" id="email_nrcy_modal" role="dialog" tabindex="-1">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-heading">
-                                    <h2 class="modal-title">收不到验证码？</h2>
-                                </div>
-                                <div class="modal-inner">
-                                    <ul>
-                                        <img src="/images/email_nrcy.jpg" height="458" width="468">
-                                        <br />
-                                    </ul>
-                                </div>
-                                <div class="modal-footer">
-                                    <p class="text-right">
-                                        <button class="btn btn-flat btn-brand-accent waves-attach waves-effect" data-dismiss="modal" type="button">我知道了</button>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </section>
             </div>
         </div>
     </div>
 </main>
-
-<footer class="ui-footer">
-    <div class="container">
-        <marquee>&copy; QUOO  <a href="/staff">STAFF</a><amarquee>		</div>
-</footer>
 
 
 
@@ -174,5 +142,95 @@
 <script src="/js/jquery.min.js"></script>
 <script src="/js/base.min.js"></script>
 <script src="js/project.min.js"></script>
+<script>
+    var messageData;
+
+
+    /**
+     * 获取验证码
+     * @param that
+     */
+    function getMsgNum(that) {
+        var phoneNumber = $('#email').val();
+        // 设置按钮倒计时
+        time($("#email_verify"));
+        var obj = {
+            phoneNumber: phoneNumber
+        };
+
+        $.ajax({
+            url: 'http://localhost:8080/sendMsg', // 后台短信发送接口
+            type: 'POST',
+            dataType: 'json',
+            contentType: "application/json",
+            async: false, //false 同步
+            data: obj,//JSON.stringify(obj),
+            //跨域请求
+            xhrFields: {
+                withCredentials: true
+            },
+            success: function (result) {
+                if(result.code == '200') {
+                    messageData = result.data;
+                }else {
+                    alert("错误码:" + data.code + "  错误信息:" + data.message);
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                console.log(XMLHttpRequest.status);
+                console.log(XMLHttpRequest.readyState);
+                console.log(textStatus);
+                console.log(phoneNumber);
+            }
+        });
+    }
+    /**
+     * 设置按钮状态
+     */
+    var wait = 60; // 短信验证码60秒后才可获取下一个
+    function time(o) {
+        if (wait == 0) {
+            o.removeAttr("disabled");
+            o.text("获取验证码");
+            wait = 60;
+        } else {
+            o.attr("disabled","disabled");
+            o.text("重新发送(" + wait + ")");
+            wait--;
+            setTimeout(function() {
+                    time(o)
+                },
+                1000)
+        }
+    }
+
+    /**
+     * 注册按钮
+     */
+    function validateNum() {
+        var data = {
+            msgNum: inputMsgNum,
+            tamp: messageData.tamp,
+            hash: messageData.hash
+        };
+
+        $.ajax({
+            url: httpurl + '/validateNum', // 验证接口
+            type: 'POST',
+            dataType: 'json',
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            async: false, //false 同步
+            success: function (data) {
+                //业务处理
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                console.log(XMLHttpRequest.status);
+                console.log(XMLHttpRequest.readyState);
+                console.log(textStatus);
+            }
+        });
+    }
+</script>
 </body>
 </html>
