@@ -182,8 +182,11 @@ public class ShopController {
         String credit = u.getCredit().toString();
         model.addAttribute("credit",credit);
         if(name != null){
-
-            return "s";
+            if (u.getVal().equals("0")){
+                return "s";
+            }else {
+                return "a";
+            }
 
         }
         else {

@@ -1,6 +1,8 @@
 package cn.com.scitc.demo7.controller;
 
+import cn.com.scitc.demo7.dao.ProorderDao;
 import cn.com.scitc.demo7.dao.UserDao;
+import cn.com.scitc.demo7.model.Proorder;
 import cn.com.scitc.demo7.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +21,8 @@ public class LoginController {
     private Logger logger = LoggerFactory.getLogger(LoginController.class.getSimpleName());
     @Autowired
     private UserDao userDao;
+    @Autowired
+    private ProorderDao proorderDao;
 
     @RequestMapping(value = "/login")
     public String page() {
@@ -57,11 +61,37 @@ public class LoginController {
                 name.add(s.getName());
             }
             logger.info("name :"+name);
-            return "s";
+            if (s.getVal().equals("0")){
+                return "s";
+            }
+            return "a";
 
         } else {
             return "test";
         }
+    }
+    @RequestMapping(value = "/bought")
+    public String bought( HttpServletRequest request,Model model) {
+        HttpSession session = request.getSession();
+        //获取session中的name；
+        ArrayList name=(ArrayList) session.getAttribute("name");
+        String n = (String) name.get(0).toString();
+        User s = userDao.findByName(n);
+
+        if (s.getVal().equals("0")){
+            Iterable<Proorder> l = proorderDao.findAll();
+            model.addAttribute("l",l);
+        }else {
+            Iterable<Proorder> l =  proorderDao.findByName(n);
+            model.addAttribute("l",l);
+        }
+
+        if (s.getVal().equals("0")){
+            return "bought";
+        }else {
+            return "b";
+        }
+
     }
 
     @RequestMapping(value = "/logout")

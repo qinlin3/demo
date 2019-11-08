@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width" name="viewport">
+    <meta name="theme-color" content="#ff9800">
+    <title>QUOO</title>
+
+
+    <!-- css -->
+    <link href="css/base.min.css" rel="stylesheet">
+    <link href="css/project.min.css" rel="stylesheet">
+    <link href="https://fonts.loli.net/css?family=Roboto:300,300italic,400,400italic,500,500italic" rel="stylesheet">
+    <link href="https://fonts.loli.net/css?family=Material+Icons">
+
+
+
+
+
+
+    <!-- favicon -->
+    <!-- ... -->
+
+
+
+
+</head>
+<body class="page-orange">
+<header class="header header-orange header-transparent header-waterfall ui-header">
+    <ul class="nav nav-list pull-left">
+        <div>
+            <a data-toggle="menu" href="#ui_menu">
+                <span class="icon icon-lg text-white">format_align_justify</span>
+            </a>
+        </div>
+    </ul>
+
+    <ul class="nav nav-list pull-right">
+        <div class="dropdown margin-right">
+            <a class="dropdown-toggle padding-left-no padding-right-no" data-toggle="dropdown">
+                <span class="access-hide">742715157@qq.com</span>
+                <span class="icon icon-cd margin-right">account_circle</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-right">
+                <li>
+                    <a class="padding-right-lg waves-attach" href="/user/"><span class="icon icon-lg margin-right">account_box</span>用户中心</a>
+                </li>
+
+                <li>
+                    <a class="padding-right-cd waves-attach" href="/logout"><span class="icon icon-lg margin-right">exit_to_app</span>登出</a>
+                </li>
+            </ul>
+
+        </div>
+    </ul>
+</header>
+<nav aria-hidden="true" class="menu menu-left nav-drawer nav-drawer-md" id="ui_menu" tabindex="-1">
+    <div class="menu-scroll">
+        <div class="menu-content">
+            <a class="menu-logo" href="/login"><i class="icon icon-lg" >language</i>&nbsp;QUOO</a>
+            <ul class="nav">
+                <li>
+                    <a class="waves-attach" data-toggle="collapse" href="#ui_menu_me">菜单</a>
+                    <ul class="menu-collapse collapse in" id="ui_menu_me">
+                        <li>
+                            <a href="/user">
+                                <i class="icon icon-lg">account_balance_wallet</i>&nbsp;用户中心
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="menu-collapse collapse in" id="ui_menu_help">
+                        <li>
+                            <a href="/shoplist">
+                                <i class="icon icon-lg">shop</i>&nbsp;套餐购买
+                            </a>
+                        </li>
+
+                        <li><a href="/bought"><i class="icon icon-lg">shopping_cart</i>&nbsp;购买记录</a></li>
+                    </ul>
+
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<main class="content">
+    <div class="content-header ui-content-header">
+        <div class="container">
+            <h1 class="content-heading">购买记录</h1>
+        </div>
+    </div>
+    <div class="container">
+        <div class="col-lg-12 col-sm-12">
+            <section class="content-inner margin-top-no">
+
+                <div class="card">
+                    <div class="card-main">
+                        <div class="card-inner">
+                            <p>系统中您的购买记录。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+
+                    <table class="table ">
+                        <tr>
+                            <th>商品名称</th>
+                            <th>价格</th>
+                            <th>日期</th>
+                            <th>地址</th>
+                            <th>手机号</th>
+
+                        </tr>
+                        <tr th:each="l:${l}">
+                            <td th:text="${l.product}"></td>
+                            <td th:text="${l.price}"></td>
+                            <td th:text="${l.date}"></td>
+                            <td th:text="${l.address}"></td>
+                            <td th:text="${l.name}"></td>
+
+                        </tr>
+                    </table>
+
+                </div>
+
+
+                <div aria-hidden="true" class="modal modal-va-middle fade" id="delete_modal" role="dialog" tabindex="-1">
+                    <div class="modal-dialog modal-xs">
+                        <div class="modal-content">
+                            <div class="modal-heading">
+                                <a class="modal-close" data-dismiss="modal">×</a>
+                                <h2 class="modal-title">确认要关闭自动续费？</h2>
+                            </div>
+                            <div class="modal-inner">
+                                <p>请您确认。</p>
+                            </div>
+                            <div class="modal-footer">
+                                <p class="text-right"><button class="btn btn-flat btn-brand-accent waves-attach waves-effect" data-dismiss="modal" type="button">取消</button><button class="btn btn-flat btn-brand-accent waves-attach" data-dismiss="modal" id="delete_input" type="button">确定</button></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div aria-hidden="true" class="modal modal-va-middle fade" id="result" role="dialog" tabindex="-1">
+                    <div class="modal-dialog modal-xs">
+                        <div class="modal-content">
+                            <div class="modal-inner">
+                                <p class="h5 margin-top-sm text-black-hint" id="msg"></p>
+                            </div>
+                            <div class="modal-footer">
+                                <p class="text-right"><button class="btn btn-flat btn-brand-accent waves-attach" data-dismiss="modal" type="button" id="result_ok">知道了</button></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+    </div>
+</main>
+
+
+<!-- js -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/base.min.js"></script>
+<script src="js/project.min.js"></script>
+
+</body>
+</html>

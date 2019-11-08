@@ -10,6 +10,7 @@ public class User {
     private String password;
     private Integer credit;
     private String address;
+    private String val;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -68,11 +69,23 @@ public class User {
         return Objects.hash(id, name, password, credit);
     }
 
+    @Basic
+    @Column(name = "address", nullable = true, length = 20)
     public String getAddress() {
         return address;
     }
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    @Basic
+    @Column(name = "val", nullable = true, length = 1)
+    public String getVal() {
+        return val;
+    }
+
+    public void setVal(String val) {
+        this.val = val;
     }
 }

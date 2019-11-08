@@ -111,7 +111,7 @@
                             </a>
                         </li>
 
-                        <li><a href="/bought"><i class="icon icon-lg">shopping_cart</i>&nbsp;购买记录</a></li>
+                        <li><a href="/user/bought"><i class="icon icon-lg">shopping_cart</i>&nbsp;购买记录</a></li>
 
 
 
@@ -168,7 +168,7 @@
 <main class="content">
     <div class="content-header ui-content-header">
         <div class="container">
-            <h1 class="content-heading">商品列表</h1>
+            <h1 class="content-heading">购买记录</h1>
         </div>
     </div>
     <div class="container">
@@ -178,85 +178,66 @@
                 <div class="card">
                     <div class="card-main">
                         <div class="card-inner">
-                            <p>购买前请先对账户进行 <a href="/user/code" target="_black" title="账户充值">账户充值</a> </p>
-                            <p>套餐等级和速度成正比，等级越高速度越快线路越多，有任何问题请点击右下角按钮联系在线客服 </p>
-                            <p>相同套餐可以叠加购买VIP时间会叠加，<font color="red">不同套餐如果需要叠加购买请先联系在线客服</font></p>
-                            <p>需要套餐升级变更请联系在线客服</font></p>
-                            <p>当前余额：<code><td th:text="${credit}"></td></code> 元</p>
+                            <p>系统中您的购买记录。</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="table-responsive">
-                        <table class="table ">
-                            <tr>
-                                <th>套餐</th>
-                                <th>价格(元)</th>
 
-                                <th>操作</th>
+                    <table class="table ">
+                        <tr>
+                            <th>商品名称</th>
+                            <th>价格</th>
+                            <th>日期</th>
+                            <th>地址</th>
+                            <th>手机号</th>
 
-                            </tr>
+                        </tr>
+                        <tr th:each="l:${l}">
+                            <td th:text="${l.product}"></td>
+                            <td th:text="${l.price}"></td>
+                            <td th:text="${l.date}"></td>
+                            <td th:text="${l.address}"></td>
+                            <td th:text="${l.name}"></td>
 
-                            <form method="post" th:action="@{/shop}">
-
-                            <tr>
-                                <td>
-                                    <input type="text" style="border: 0px" readonly="readonly" name="water" value="2加仑(7.5升)">
-                                </td>
-                                <td>
-                                    <input type="text" style="border: 0px" readonly="readonly" name="price" value="12">
-                                </td>
-
-                                <td>
-                                    <div>
-                                        <button class="btn btn-brand-accent">购买</button>
-                                    </div>
-                                </td>
-                            </tr>
-
-                            </form>
-                            <form method="post" th:action="@{/shop}">
-
-                            <tr>
-                                <td>
-                                    <input type="text" style="border: 0px" readonly="readonly" name="water" value="3加仑(11.3升)">
-                                </td>
-                                <td>
-                                    <input type="text" style="border: 0px" readonly="readonly" name="price" value="16">
-                                </td>
-
-                                <td>
-                                    <div>
-                                        <button class="btn btn-brand-accent">购买</button>
-                                    </div>
-                                </td>
-                            </tr>
-
-                            </form>
-                            <form method="post" th:action="@{/shop}">
-
-                            <tr>
-                                <td>
-                                    <input type="text" style="border: 0px" readonly="readonly" name="water" value="【推荐】5加仑(18.9升)">
-                                </td>
-                                <td>
-                                    <input type="text" style="border: 0px" readonly="readonly" name="price" value="20">
-                                </td>
-
-                                <td>
-                                    <div>
-                                        <button class="btn btn-brand-accent">购买</button>
-                                    </div>
-                                </td>
-                            </tr>
-
-                            </form>
-
-                        </table>
+                        </tr>
+                    </table>
 
                 </div>
+
+
+                <div aria-hidden="true" class="modal modal-va-middle fade" id="delete_modal" role="dialog" tabindex="-1">
+                    <div class="modal-dialog modal-xs">
+                        <div class="modal-content">
+                            <div class="modal-heading">
+                                <a class="modal-close" data-dismiss="modal">×</a>
+                                <h2 class="modal-title">确认要关闭自动续费？</h2>
+                            </div>
+                            <div class="modal-inner">
+                                <p>请您确认。</p>
+                            </div>
+                            <div class="modal-footer">
+                                <p class="text-right"><button class="btn btn-flat btn-brand-accent waves-attach waves-effect" data-dismiss="modal" type="button">取消</button><button class="btn btn-flat btn-brand-accent waves-attach" data-dismiss="modal" id="delete_input" type="button">确定</button></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div aria-hidden="true" class="modal modal-va-middle fade" id="result" role="dialog" tabindex="-1">
+                    <div class="modal-dialog modal-xs">
+                        <div class="modal-content">
+                            <div class="modal-inner">
+                                <p class="h5 margin-top-sm text-black-hint" id="msg"></p>
+                            </div>
+                            <div class="modal-footer">
+                                <p class="text-right"><button class="btn btn-flat btn-brand-accent waves-attach" data-dismiss="modal" type="button" id="result_ok">知道了</button></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
-        </div>
+
     </div>
 </main>
 
