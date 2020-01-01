@@ -48,12 +48,13 @@ public class ResetController {
         logger.info("名字2:"+email_code);
         User s = userDao.findByName(email);
         if(s != null && code.equals(email_code)){
-            /*User user = new User();
-            user.setName(email);
-            user.setPassword(password);
+            logger.info("密码:"+password);
+            s.setPassword(password);
+            userDao.save(s);
+            /*s.setPassword(password);
             user.setCredit(100);
             userDao.save(user);*/
-            return "token";
+            return "password_sucess";
             //return "redirect:/userlist";
         }else {
             return "test";
