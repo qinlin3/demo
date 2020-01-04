@@ -10,6 +10,13 @@ public class TestController {
     @RequestMapping(value="/test3")
     public String testJsp(){
         System.out.println("test controller===========");
-        return ("demo");
+        //return ("demo");
+        return ("template");
+    }
+    @RequestMapping(value="/liuren")
+    public String liuren(){
+        System.out.println("test controller===========");
+        //return ("demo");
+        return ("liuren");
     }
 }
