@@ -1,6 +1,11 @@
 package cn.com.scitc.demo7.controller;
 
+import cn.com.scitc.demo7.dao.ImagesaddressDao;
+import cn.com.scitc.demo7.model.Imagesaddress;
 import cn.com.scitc.demo7.utils.Message;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +23,9 @@ import java.util.UUID;
  */
 @Controller
 public class PicUploadController {
-
+    private Logger logger = LoggerFactory.getLogger(HomeController.class.getSimpleName());
+    @Autowired
+    private ImagesaddressDao imagesaddressDao;
     @RequestMapping("/picUpload")
     public String picUpload(){
         return "picUpload1";
@@ -37,10 +44,21 @@ public class PicUploadController {
         try {
             //将图片保存到static文件夹里
             fileUpload.transferTo(new File(filePath+fileName));
+
+            String pathname = "/images/"+ fileName;
+            Imagesaddress imagesaddress = new Imagesaddress();
+            imagesaddress.setImages(fileName);
+            imagesaddress.setAddress(pathname);
+            imagesaddressDao.save(imagesaddress);
+            logger.info(fileName);
+            logger.info(pathname);
             return new Message(0,"success to upload");
         } catch (Exception e) {
             e.printStackTrace();
             return new Message(-1,"fail to upload");
+            //保存图片信息到数据库中
+
         }
+
     }
 }
