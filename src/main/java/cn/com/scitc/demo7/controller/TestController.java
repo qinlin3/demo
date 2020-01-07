@@ -10,8 +10,9 @@ public class TestController {
     @RequestMapping(value="/test3")
     public String testJsp(){
         System.out.println("test controller===========");
-        //return ("demo");
         return ("template");
+        //return ("demo");
+        //return ("20200107225832432");
     }
     @RequestMapping(value="/liuren")
     public String liuren(){

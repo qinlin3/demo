@@ -8,6 +8,7 @@ public class Imagesaddress {
     private Integer id;
     private String images;
     private String address;
+    private String fileName;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -53,5 +54,15 @@ public class Imagesaddress {
     @Override
     public int hashCode() {
         return Objects.hash(id, images, address);
+    }
+
+    @Basic
+    @Column(name = "file_name", nullable = false, length = 2000)
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 }

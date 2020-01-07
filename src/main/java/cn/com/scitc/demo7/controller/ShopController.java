@@ -113,6 +113,13 @@ public class ShopController {
 
         Date date = new Date();
         Timestamp timeStamep = new Timestamp(date.getTime());
+        String Times = timeStamep.toString();
+        //去除时间中的-和.
+        String str1 = Times.replaceAll("[[\\s-.:punct:]]","");
+        //去除事件中的.
+        //String str1 = str.replaceAll("[[\\s.:punct:]]", "");
+        logger.info(String.valueOf(timeStamep));
+        logger.info(str1);
 
         int[] p = new int[100];
         int a = 0;

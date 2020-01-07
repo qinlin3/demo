@@ -1,8 +1,17 @@
 package cn.com.scitc.demo7.utils;
 
+import cn.com.scitc.demo7.controller.HomeController;
+import cn.com.scitc.demo7.dao.ImagesaddressDao;
+import cn.com.scitc.demo7.model.Imagesaddress;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.sql.Timestamp;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * @ClassName: CreateHtmlUtils
@@ -11,14 +20,40 @@ import java.util.Calendar;
  * @date 2016年4月22日 下午3:51:16
  */
 public class CreateHtmlUtils {
+    private Logger logger = LoggerFactory.getLogger(HomeController.class.getSimpleName());
+    @Autowired
+    private ImagesaddressDao imagesaddressDao;
+    public static void CreateHtml(String pathname) {
+       // public static void main(String[] args)
+            String filePath = "E:\\demo10\\src\\main\\resources\\templates\\template.html";
+            String imagePath = pathname;
+                    //"http://localhost:8080/images/d6f36392-5934-4004-b1db-e09959352424.png";
+            String disrPath = "E:\\demo10\\src\\main\\resources\\templates\\";
 
-    public static void main(String[] args) {
-        String filePath = "E:\\demo10\\src\\main\\resources\\templates\\template.html";
-        String imagePath ="http://localhost:8080/images/d6f36392-5934-4004-b1db-e09959352424.png";
-        String disrPath = "E:\\demo10\\src\\main\\resources\\templates\\";
-        String fileName = "liuren";
-        MakeHtml(filePath,imagePath,disrPath,fileName);
+            Date date = new Date();
+            Timestamp timeStamep = new Timestamp(date.getTime());
+            String Times = timeStamep.toString();
+            //去除时间中的-和.
+            String str1 = Times.replaceAll("[[\\s-.:punct:]]","");
+
+            String fileName = str1;
+                    //"liuren";
+            //MakeHtml(filePath,imagePath,disrPath,fileName);
+
+            MakeHtml(filePath,imagePath,disrPath,fileName);
+
     }
+    /*public String makehtml(String file_name) {
+        //Iterable<Imagesaddress> list = imagesaddressDao.findAll();
+        Imagesaddress i = imagesaddressDao.findByImages(file_name);
+        String a = i.getId().toString();
+
+        logger.info(a);
+        return a;
+        //return "studentfrom";
+    }*/
+
+
     /**
      * @Title: MakeHtml
      * @Description: 创建html
