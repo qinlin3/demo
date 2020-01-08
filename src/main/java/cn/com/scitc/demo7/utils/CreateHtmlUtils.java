@@ -23,24 +23,17 @@ public class CreateHtmlUtils {
     private Logger logger = LoggerFactory.getLogger(HomeController.class.getSimpleName());
     @Autowired
     private ImagesaddressDao imagesaddressDao;
-    public static void CreateHtml(String pathname) {
+    public static void CreateHtml(String pathname,String name) {
        // public static void main(String[] args)
             String filePath = "E:\\demo10\\src\\main\\resources\\templates\\template.html";
             String imagePath = pathname;
                     //"http://localhost:8080/images/d6f36392-5934-4004-b1db-e09959352424.png";
             String disrPath = "E:\\demo10\\src\\main\\resources\\templates\\";
 
-            Date date = new Date();
-            Timestamp timeStamep = new Timestamp(date.getTime());
-            String Times = timeStamep.toString();
-            //去除时间中的-和.
-            String str1 = Times.replaceAll("[[\\s-.:punct:]]","");
 
-            String fileName = str1;
-                    //"liuren";
             //MakeHtml(filePath,imagePath,disrPath,fileName);
 
-            MakeHtml(filePath,imagePath,disrPath,fileName);
+            MakeHtml(filePath,imagePath,disrPath,name);
 
     }
     /*public String makehtml(String file_name) {

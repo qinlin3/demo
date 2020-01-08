@@ -12,6 +12,8 @@
       <mapping resource="cn/com/scitc/demo7/model/User.hbm.xml"/>
       <mapping class="cn.com.scitc.demo7.model.Imagesaddress"/>
       <mapping resource="cn/com/scitc/demo7/model/Imagesaddress.hbm.xml"/>
+      <mapping resource="cn/com/scitc/demo7/model/CmsHtml.hbm.xml"/>
+      <mapping class="cn.com.scitc.demo7.model.CmsHtml"/>
       <!-- <property name="connection.username"/> -->
     <!-- <property name="connection.password"/> -->
 
