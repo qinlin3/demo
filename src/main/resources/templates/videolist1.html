@@ -16,7 +16,7 @@
 <div class="wrap center">
     <ul class="v_list">
         <li th:each="l : ${l}">
-            <a title="宝石商人理查德的谜鉴定" th:href="${l.htmlName}" target="_blank">
+            <a title="宝石商人理查德的谜鉴定" th:href="@{/av/{avId}(avId=${l.htmlName})}" target="_blank">
                 <img alt="宝石商人理查德的谜鉴定" data-original="/upload/vod/2019-12-29/201912291577549879.jpg" th:src="${l.pathname}" class="lazy">
                 <span class="note_adds">
 					<em class="note_bg"></em>

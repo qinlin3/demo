@@ -21,6 +21,7 @@ import java.net.URLConnection;
 import java.net.URLEncoder;
 
 @Controller
+
 public class VideoController {
     @Autowired
     private CmsHtmlDao cmsHtmlDao;
@@ -34,9 +35,9 @@ public class VideoController {
         model.addAttribute("l",l);
         return "videolist1";
     }
-    @RequestMapping("/{address}")
+    @RequestMapping("/av/{address}")
     public String videolist2(@PathVariable(value="address") String address){
-        return address;
+        return "video/" + address;
     }
     @ResponseBody
     @RequestMapping("/getVideoSrc")

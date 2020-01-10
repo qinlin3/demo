@@ -28,7 +28,7 @@ public class CreateHtmlUtils {
             String filePath = "E:\\demo10\\src\\main\\resources\\templates\\template.html";
             String imagePath = pathname;
                     //"http://localhost:8080/images/d6f36392-5934-4004-b1db-e09959352424.png";
-            String disrPath = "E:\\demo10\\src\\main\\resources\\templates\\";
+            String disrPath = "E:\\demo10\\src\\main\\resources\\templates\\video\\";
 
 
             //MakeHtml(filePath,imagePath,disrPath,fileName);
