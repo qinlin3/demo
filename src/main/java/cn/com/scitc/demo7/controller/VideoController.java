@@ -8,6 +8,7 @@ import cn.com.scitc.demo7.model.Imagesaddress;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -32,6 +33,10 @@ public class VideoController {
         Iterable<CmsHtml> l = cmsHtmlDao.findAll();
         model.addAttribute("l",l);
         return "videolist1";
+    }
+    @RequestMapping("/{address}")
+    public String videolist2(@PathVariable(value="address") String address){
+        return address;
     }
     @ResponseBody
     @RequestMapping("/getVideoSrc")
