@@ -1,7 +1,9 @@
 package cn.com.scitc.demo7.controller;
 
 
+import cn.com.scitc.demo7.dao.CmsHtmlDao;
 import cn.com.scitc.demo7.dao.ImagesaddressDao;
+import cn.com.scitc.demo7.model.CmsHtml;
 import cn.com.scitc.demo7.model.Imagesaddress;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,14 +22,14 @@ import java.net.URLEncoder;
 @Controller
 public class VideoController {
     @Autowired
-    private ImagesaddressDao imagesaddressDao;
+    private CmsHtmlDao cmsHtmlDao;
     @RequestMapping("/videolist")
     public String videolist(){
         return "videolist";
     }
     @RequestMapping("/videolist1")
     public String videolist1(Model model){
-        Iterable<Imagesaddress> l = imagesaddressDao.findAll();
+        Iterable<CmsHtml> l = cmsHtmlDao.findAll();
         model.addAttribute("l",l);
         return "videolist1";
     }
