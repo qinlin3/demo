@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>キリキリ動画-404 not found-</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="kirikiri(キリキリ)" />
+    <meta name="Resource-type" content="キリキリ動画" />
+    <link href="/css/videolist/css.css" rel="stylesheet" type="text/css" />
+    <link href="/css/videolist/global.css" rel="stylesheet">
+    <link href="/css/videolist/common.css" rel="stylesheet">
+</head>
+<body oncontextmenu="return false" onselectstart="return false">
+
+
+<div class="wrap center">
+    <ul class="v_list">
+        <li th:each="l : ${l}">
+            <a title="宝石商人理查德的谜鉴定" href="/?m=vod-detail-id-7585.html" target="_blank">
+                <img alt="宝石商人理查德的谜鉴定" data-original="/upload/vod/2019-12-29/201912291577549879.jpg" th:src="${l.address}" class="lazy">
+                <span class="note_adds">
+					<em class="note_bg"></em>
+					<em class="note_text">更新至01集</em>
+				</span>
+                <span class="name">宝石商人理查德的谜鉴定</span>
+            </a>
+            <p>正义感满满的大学生中田正义，某晚帮助了被醉鬼纠缠的美貌外国人理查德。了解到理査德是个宝石商人之后，中田拿着袓母生前一直珍藏的戒指拜托理査德鉴定。通过理査德的鉴定揭开了袓母的过往，真相与心愿。借此，正义开始在理査德在银座宝石店“Jewelry étranger”打工。每天在揭开这些被带到étranger来的各样“迷团”的过程中，理査德和正义的关系也发生了微妙的变化。但是彼此都隐藏着不可告人的秘密。俊美宝石商和正义感满满的大学生交织出的宝石推理正在拉开帷幕</p>
+        </li>
+        <!--
+        <li th:each="l : ${l}">
+            <img src="/images/avatar-001.jpg">
+            <img th:src="${l.address}" class="lazy">
+        </li>-->
+    </ul>
+</div>

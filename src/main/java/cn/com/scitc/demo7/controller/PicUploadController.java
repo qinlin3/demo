@@ -73,7 +73,8 @@ public class PicUploadController {
 
         //保存网页与文件关联的信息
         CmsHtml cmsHtml = new CmsHtml();
-        cmsHtml.setFileName(fileName);
+        cmsHtml.setFilename(fileName);
+        cmsHtml.setFileName(file_Name);
         cmsHtml.setHtmlName(name);
         cmsHtml.setPathname(pathname);
         cmsHtmlDao.save(cmsHtml);

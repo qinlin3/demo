@@ -10,6 +10,7 @@ public class CmsHtml {
     private String fileName;
     private String pathname;
     private String htmlName;
+    private String filename;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -66,5 +67,15 @@ public class CmsHtml {
     @Override
     public int hashCode() {
         return Objects.hash(id, fileName, pathname, htmlName);
+    }
+
+    @Basic
+    @Column(name = "filename", nullable = false, length = 200)
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
     }
 }
