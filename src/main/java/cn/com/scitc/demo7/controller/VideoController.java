@@ -36,8 +36,14 @@ public class VideoController {
         return "videolist1";
     }
     @RequestMapping("/av/{address}")
-    public String videolist2(@PathVariable(value="address") String address){
-        return "video/" + address;
+    public String videolist2(@PathVariable(value="address") String address,Model model){
+        String html_name = address;
+        CmsHtml c = cmsHtmlDao.findByHtmlName(html_name);
+        String path_name = c.getPathname();
+        model.addAttribute("path_name",path_name);
+        System.out.println(path_name);
+        //return "video/" + address;
+        return "template";
     }
     @ResponseBody
     @RequestMapping("/getVideoSrc")

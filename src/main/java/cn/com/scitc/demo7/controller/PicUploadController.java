@@ -27,6 +27,7 @@ import java.util.UUID;
  *
  */
 @Controller
+@RequestMapping(value = "/")
 public class PicUploadController {
     private Logger logger = LoggerFactory.getLogger(HomeController.class.getSimpleName());
     @Autowired
@@ -78,7 +79,8 @@ public class PicUploadController {
         cmsHtml.setHtmlName(name);
         cmsHtml.setPathname(pathname);
         cmsHtmlDao.save(cmsHtml);
-        CreateHtmlUtils.CreateHtml(pathname,name);
+        //创建页面
+        // CreateHtmlUtils.CreateHtml(pathname,name);
 
        /* Imagesaddress i =  imagesaddressDao.findByImages(file_Name);
         //Imagesaddress i = (Imagesaddress) imagesaddressDao.findByImages(fileName);
